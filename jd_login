@@ -1,0 +1,93 @@
+package INTERFAZ;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class JD_LOG extends javax.swing.JDialog implements Runnable {
+
+  
+    Thread hilo;
+    
+    public JD_LOG(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        hilo = new Thread(this);
+        hilo.start();
+        
+        this.setLocationRelativeTo(null);
+    }
+
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel1.setText("Cargando");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addComponent(jLabel1)))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    public static void main(String args[]) {
+      
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JD_LOG dialog = new JD_LOG(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
+            }
+        });
+    }
+
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JProgressBar jProgressBar1;
+                      
+    @Override
+    public void run() {
+        jProgressBar1.setMaximum(4);
+        for(int i=0;i<4;i++)
+        {
+          jLabel1.setText("Proceso: "+(i+1));
+          jProgressBar1.setValue(i+1);
+            try {
+                Thread.sleep(350);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(JD_LOG.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        this.dispose();
+    }
+}
