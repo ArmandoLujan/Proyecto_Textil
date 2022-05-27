@@ -1,0 +1,383 @@
+package GUI_Venta;
+import Punto_De_Venta.TEXTIL_USUARIOS;
+import Punto_De_Venta.TEXTIL_MAIN;
+import Punto_De_Venta.CH_PRODUCTOS;
+import Punto_De_Venta.CH_VENTAS;
+import Punto_De_Venta.CH_CLIENTES;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
+public class MAIN extends javax.swing.JFrame {
+    
+    public ArrayList<TEXTIL_USUARIOS> lusu= new ArrayList<TEXTIL_USUARIOS>();
+    public ArrayList<CH_PRODUCTOS> pdproductos= new ArrayList<CH_PRODUCTOS>();
+    public ArrayList<CH_CLIENTES> clclientes= new ArrayList<CH_CLIENTES>();
+    public String rol;
+
+    public MAIN() {
+        initComponents();
+    }
+
+    
+    public void enviarUsuarios(ArrayList<TEXTIL_USUARIOS> lu, String nu, String ro)
+    {
+      this.lusu = lu;
+      jlusuario.setText(nu);
+      this.rol= ro;
+      
+      
+      if(rol.compareTo("Administrador")!=0)
+          usuario.setVisible(false);
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        producto = new javax.swing.JButton();
+        C_Producto = new javax.swing.JButton();
+        usuario = new javax.swing.JButton();
+        C_Usuario = new javax.swing.JButton();
+        venta = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
+        cliente = new javax.swing.JButton();
+        c_cliente = new javax.swing.JButton();
+        jlusuario = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setBackground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("                            Textiles Antequera");
+        getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel2.setBackground(new java.awt.Color(255, 153, 102));
+
+        producto.setText("Productos");
+        producto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productoActionPerformed(evt);
+            }
+        });
+
+        C_Producto.setText("CRUD Productos");
+
+        usuario.setText("Usuarios");
+        usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioActionPerformed(evt);
+            }
+        });
+
+        C_Usuario.setText("CRUD Usuarios");
+        C_Usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C_UsuarioActionPerformed(evt);
+            }
+        });
+
+        venta.setText("Venta");
+        venta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ventaActionPerformed(evt);
+            }
+        });
+
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
+
+        cliente.setText("Clientes");
+        cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clienteActionPerformed(evt);
+            }
+        });
+
+        c_cliente.setText("CRUD Clientes");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 11, Short.MAX_VALUE)
+                        .addComponent(producto, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(C_Producto))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(68, 68, 68)
+                                .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(76, 76, 76)
+                                .addComponent(venta, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(C_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(c_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jlusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jlusuario)
+                .addGap(34, 34, 34)
+                .addComponent(venta)
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(producto)
+                    .addComponent(C_Producto))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(C_Usuario)
+                    .addComponent(usuario))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cliente)
+                    .addComponent(c_cliente))
+                .addGap(35, 35, 35)
+                .addComponent(salir)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        pack();
+    }// </editor-fold>                        
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        // TODO add your handling code here:
+        System.exit(0);
+    }                                     
+
+    private void productoActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        CAT_PRODUCTOS cp = new CAT_PRODUCTOS(this,true);
+        cp.iniciar(this);
+        cp.setVisible(true);
+        
+    }                                        
+
+    private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        CAT_USUARIOS ctu = new CAT_USUARIOS(this,true);
+        ctu.iniciar(this);
+        ctu.setVisible(true);
+    }                                       
+
+    private void C_UsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        USUARIOS us= new USUARIOS(this, true);
+        us.iniciar(this);
+        us.setVisible(true);
+    }                                         
+
+    private void ventaActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        // TODO add your handling code here:
+    }                                     
+
+    private void clienteActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        // TODO add your handling code here:
+        CAT_CLIENTES cc = new CAT_CLIENTES(this,true);
+        cc.iniciar(this);
+        cc.setVisible(true);
+    }                                       
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TEXTIL_MAIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TEXTIL_MAIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TEXTIL_MAIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TEXTIL_MAIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MAIN().setVisible(true);
+            }
+        });
+    }
+
+    public void serializarObjetos()
+    {
+       FileOutputStream archivo;
+       ObjectOutputStream salida;
+       try{
+       
+           archivo= new FileOutputStream("clientes.dat");
+           salida= new ObjectOutputStream(archivo);
+           if(salida!=null)
+               salida.writeObject(clclientes);
+           
+           salida.close();
+           
+       }catch(Exception e1)
+       {
+         System.out.println("Error "+ e1.getMessage());
+       }
+    }
+    
+    public void serializarProductos()
+    {
+       FileOutputStream archivo;
+       ObjectOutputStream salida;
+       try{
+       
+           archivo= new FileOutputStream("productos.dat");
+           salida= new ObjectOutputStream(archivo);
+           if(salida!=null)
+               salida.writeObject(pdproductos);
+           
+           salida.close();
+           
+       }catch(Exception e1)
+       {
+         System.out.println("Error "+ e1.getMessage());
+       }
+    }
+    
+    public void serializarUsuarios()
+    {
+       FileOutputStream archivo;
+       ObjectOutputStream salida;
+       try{
+       
+           archivo= new FileOutputStream("usuarios.dat");
+           salida= new ObjectOutputStream(archivo);
+           if(salida!=null)
+               salida.writeObject(lusu);
+           
+           salida.close();
+           
+       }catch(Exception e1)
+       {
+         System.out.println("Error "+ e1.getMessage());
+       }
+    }
+    
+    public void deserializarObjetos()
+    {
+       FileInputStream archivo;
+       ObjectInputStream entrada;
+       try{
+       
+           archivo= new FileInputStream("clientes.dat");
+           entrada= new ObjectInputStream(archivo);
+           if(entrada!=null)
+              clclientes=(ArrayList<CH_CLIENTES>) entrada.readObject();
+           
+           entrada.close();
+           
+       }catch(Exception e1)
+       {
+         System.out.println("Error "+ e1.getMessage());
+       }
+    }
+    
+     public void deserializarProductos()
+    {
+       FileInputStream archivo;
+       ObjectInputStream entrada;
+       try{
+       
+           archivo= new FileInputStream("productos.dat");
+           entrada= new ObjectInputStream(archivo);
+           if(entrada!=null)
+              pdproductos=(ArrayList<CH_PRODUCTOS>) entrada.readObject();
+           
+           entrada.close();
+           
+       }catch(Exception e1)
+       {
+         System.out.println("Error "+ e1.getMessage());
+       }
+    }
+     
+     public void deserializarUsuarios()
+    {
+       FileInputStream archivo;
+       ObjectInputStream entrada;
+       try{
+       
+           archivo= new FileInputStream("usuarios.dat");
+           entrada= new ObjectInputStream(archivo);
+           if(entrada!=null)
+              lusu=(ArrayList<TEXTIL_USUARIOS>) entrada.readObject();
+           
+           entrada.close();
+           
+       }catch(Exception e1)
+       {
+         System.out.println("Error "+ e1.getMessage());
+       }
+    }
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton C_Producto;
+    private javax.swing.JButton C_Usuario;
+    private javax.swing.JButton c_cliente;
+    private javax.swing.JButton cliente;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jlusuario;
+    private javax.swing.JButton producto;
+    private javax.swing.JButton salir;
+    private javax.swing.JButton usuario;
+    private javax.swing.JButton venta;
+    // End of variables declaration                   
+}
