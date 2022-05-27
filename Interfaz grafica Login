@@ -1,9 +1,9 @@
-package GUI_Venta;
+package INTERFAZ;
 
-import Punto_De_Venta.TEXTIL_MAIN;
-import Punto_De_Venta.TEXTIL_USUARIOS;
-import Punto_De_Venta.CH_PRODUCTOS;
-import Punto_De_Venta.ENCRIP;
+import TEXTILES.TEXTIL_MAIN;
+import TEXTILES.TEXTIL_USUARIOS;
+import TEXTILES.CH_PRODUCTOS;
+import TEXTILES.ENCRIP;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
